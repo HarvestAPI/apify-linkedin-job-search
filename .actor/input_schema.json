@@ -38,8 +38,8 @@
     },
 
     "workplaceType": {
-      "title": "Work Location Options",
-      "description": "Select one or more applicable work location types.",
+      "title": "Workplace Type",
+      "description": "Select one or more applicable workplace types.",
       "type": "array",
       "editor": "select",
       "prefill": ["remote", "hybrid"],
@@ -51,8 +51,8 @@
     },
 
     "employmentType": {
-      "title": "Work Location Options",
-      "description": "Select one or more applicable work location types.",
+      "title": "Employment Type",
+      "description": "Select one or more applicable employment types.",
       "type": "array",
       "editor": "select",
       "prefill": ["full-time", "contract"],

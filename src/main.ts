@@ -89,8 +89,11 @@ for (const searchQuery of input.jobTitles) {
     if (actorMaxPaidDatasetItems && maxItems && maxItems > actorMaxPaidDatasetItems) {
       maxItems = actorMaxPaidDatasetItems;
     }
-    maxItems = maxItems - queryCounter;
     let scrapedItems = 0;
+
+    if (maxItems - queryCounter <= 0) {
+      continue;
+    }
 
     await scraper.scrapeJobs({
       query: {
@@ -106,7 +109,7 @@ for (const searchQuery of input.jobTitles) {
         lastPromise = Actor.pushData(item);
       },
       overrideConcurrency: 6,
-      maxItems,
+      maxItems: maxItems - queryCounter,
     });
 
     actorMaxPaidDatasetItems -= scrapedItems;
