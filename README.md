@@ -1,4 +1,4 @@
-## The most Advanced LinkedIn Job Search Mass Scraper
+## The most Advanced LinkedIn Job Search Bulk Scraper
 
 Our powerful tool helps you search LinkedIn Jobs by job titles and filter by locations, companies, and many other parameters without compromising security or violating platform policies. Extract full job and company details. Use multiple job title and locations for mass scraping. The actor is designed to be fast, reliable, and easy to use.
 
@@ -6,7 +6,7 @@ Our powerful tool helps you search LinkedIn Jobs by job titles and filter by loc
 
 - No cookies or account required: Access job data without sharing cookies or risking account restrictions
 - Low pricing: $1 per 1k jobs.
-- Fast response times deliver data in seconds 🚀
+- Fast response times deliver data in seconds 🚀 Extract 1,000 LinkedIn Jobs ~ 2 Minutes
 - No caching, fresh data.
 - Concurrency: each actor works scraping 6 jobs at a time.
 
