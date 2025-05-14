@@ -1,0 +1,77 @@
+{
+  "title": "Search LinkedIn Jobs",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "jobTitles": {
+      "title": "Job Titles",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Search by these job titles. Example: `Software Engineer`. We will run the scraper once for each job title. All filters below will be applied to each job title.",
+      "prefill": ["software engineer", "data scientist"],
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+
+    "location": {
+      "title": "Locations Filter",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Filter by these LinkedIn locations. Example: `San Francisco`",
+      "prefill": ["New York", "California"],
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "company": {
+      "title": "Company Filter",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Filter by these companies. Provide full URLs or company names to search in LinkedIn",
+      "maxItems": 10,
+      "prefill": [
+        "https://www.linkedin.com/company/google",
+        "https://www.linkedin.com/company/microsoft",
+        "Netflix",
+        "Oracle Corp"
+      ],
+      "uniqueItems": true
+    },
+
+    "sortBy": {
+      "title": "Sort By",
+      "type": "string",
+      "enum": ["date", "relevance"],
+      "description": "Sort the results by date or relevance.",
+      "prefill": "date"
+    },
+    "workplaceType": {
+      "title": "Work Location Options",
+      "description": "Select one or more applicable work location types.",
+      "type": "array",
+      "editor": "select",
+      "prefill": ["remote", "hybrid"],
+      "items": {
+        "type": "string",
+        "enum": ["remote", "hybrid", "on-site"]
+      },
+      "uniqueItems": true
+    },
+
+    "maxItems": {
+      "title": "Maximum number of jobs to scrape per each search query input",
+      "type": "integer",
+      "description": "Maximum number of jobs to scrape per each search query input.",
+      "prefill": 15
+    },
+
+    "geoId": {
+      "title": "Geo IDs Filter",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Filter Jobs by these LinkedIn geo IDs. Example: `103644278`.",
+      "maxItems": 10,
+      "sectionCaption": "Advanced",
+      "uniqueItems": true
+    }
+  }
+}
