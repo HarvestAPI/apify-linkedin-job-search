@@ -15,8 +15,8 @@ await Actor.init();
 
 interface Input {
   jobTitles?: string[];
-  location?: string;
-  geoId?: string;
+  locations?: string[];
+  geoIds?: string[];
   page?: number;
   maxItems?: number;
 
@@ -58,8 +58,7 @@ if (!actorMaxPaidDatasetItems) {
   actorMaxPaidDatasetItems = 9999999999;
 }
 
-let maxItems = Number(input.maxItems) || actorMaxPaidDatasetItems || undefined;
-let scrapedItems = 0;
+let maxItems = Number(input.maxItems) || actorMaxPaidDatasetItems || 9999999999;
 
 const query = {
   company: input.company,
@@ -73,26 +72,43 @@ const query = {
   postedLimit: input.postedLimit,
 };
 
-for (const searchQuery of input.jobTitles) {
-  if (actorMaxPaidDatasetItems && maxItems && maxItems > actorMaxPaidDatasetItems) {
-    maxItems = actorMaxPaidDatasetItems;
-  }
-  await scraper.scrapeJobs({
-    query: {
-      search: searchQuery,
-      ...(query as any),
-    },
-    outputType: 'callback',
-    onItemScraped: async ({ item, logger }) => {
-      logger.log(`Scraped job ${item.id}`);
-      scrapedItems++;
-      await Actor.pushData(item);
-    },
-    overrideConcurrency: 6,
-    maxItems,
-  });
+const locations: {
+  location?: string;
+  geoId?: string;
+}[] = [
+  ...(input.locations?.map((location) => ({ location })) || []),
+  ...(input.geoIds?.map((geoId) => ({ geoId })) || []),
+];
 
-  actorMaxPaidDatasetItems -= scrapedItems;
+for (const searchQuery of input.jobTitles) {
+  let queryCounter = 0;
+
+  for (const location of locations) {
+    if (actorMaxPaidDatasetItems && maxItems && maxItems > actorMaxPaidDatasetItems) {
+      maxItems = actorMaxPaidDatasetItems;
+    }
+    maxItems = maxItems - queryCounter;
+    let scrapedItems = 0;
+
+    await scraper.scrapeJobs({
+      query: {
+        ...(query as any),
+        search: searchQuery,
+        ...location,
+      },
+      outputType: 'callback',
+      onItemScraped: async ({ item }) => {
+        console.info(`Scraped job ${item.id}`);
+        scrapedItems++;
+        queryCounter++;
+        await Actor.pushData(item);
+      },
+      overrideConcurrency: 6,
+      maxItems,
+    });
+
+    actorMaxPaidDatasetItems -= scrapedItems;
+  }
 }
 
 // Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().

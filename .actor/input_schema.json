@@ -13,7 +13,7 @@
       "uniqueItems": true
     },
 
-    "location": {
+    "locations": {
       "title": "Locations Filter",
       "type": "array",
       "editor": "stringList",
@@ -121,10 +121,10 @@
       "title": "Maximum number of jobs to scrape per each search query input",
       "type": "integer",
       "description": "Maximum number of jobs to scrape per each search query input.",
-      "prefill": 15
+      "prefill": 10
     },
 
-    "geoId": {
+    "geoIds": {
       "title": "Geo IDs Filter",
       "type": "array",
       "editor": "stringList",
