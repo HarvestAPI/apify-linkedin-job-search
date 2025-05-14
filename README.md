@@ -74,6 +74,34 @@ Here is the example job output of this actor:
     "type": "OffsiteApply"
   },
   "applicants": 1,
+  "salary": {
+    "text": "80,000 - 85,000 USD",
+    "min": 80000,
+    "max": 85000,
+    "currency": "USD",
+    "payPeriod": "YEARLY",
+    "compensationType": "BASE_SALARY",
+    "compensationSource": "JOB_POSTER_PROVIDED",
+    "providedByEmployer": true
+  },
+  "jobFunctions": ["IT", "ANLS", "PRJM"],
+  "benefits": [
+    "Medical insurance",
+    "Vision insurance",
+    "Dental insurance",
+    "401(k)",
+    "Paid paternity leave",
+    "Paid maternity leave",
+    "Disability insurance"
+  ],
+  "benefitsDataSource": "JOB_POSTER",
+  "views": 2,
+  "expireAt": "2025-06-13T17:12:41.000Z",
+  "new": true,
+  "closedAt": null,
+  "contentSource": "JOBS_PREMIUM_OFFLINE",
+  "jobApplicationLimitReached": false,
+  "applicantTrackingSystem": null,
   "company": {
     "id": "10110193",
     "universalName": "east-daley-analytics",
@@ -163,35 +191,7 @@ Here is the example job output of this actor:
         "expiresAt": 1747850400000
       }
     ]
-  },
-  "salary": {
-    "text": "80,000 - 85,000 USD",
-    "min": 80000,
-    "max": 85000,
-    "currency": "USD",
-    "payPeriod": "YEARLY",
-    "compensationType": "BASE_SALARY",
-    "compensationSource": "JOB_POSTER_PROVIDED",
-    "providedByEmployer": true
-  },
-  "jobFunctions": ["IT", "ANLS", "PRJM"],
-  "benefits": [
-    "Medical insurance",
-    "Vision insurance",
-    "Dental insurance",
-    "401(k)",
-    "Paid paternity leave",
-    "Paid maternity leave",
-    "Disability insurance"
-  ],
-  "benefitsDataSource": "JOB_POSTER",
-  "views": 2,
-  "expireAt": "2025-06-13T17:12:41.000Z",
-  "new": true,
-  "closedAt": null,
-  "contentSource": "JOBS_PREMIUM_OFFLINE",
-  "jobApplicationLimitReached": false,
-  "applicantTrackingSystem": null
+  }
 }
 ```
 
