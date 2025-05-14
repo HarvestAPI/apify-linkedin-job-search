@@ -37,13 +37,6 @@
       "uniqueItems": true
     },
 
-    "sortBy": {
-      "title": "Sort By",
-      "type": "string",
-      "enum": ["date", "relevance"],
-      "description": "Sort the results by date or relevance.",
-      "prefill": "date"
-    },
     "workplaceType": {
       "title": "Work Location Options",
       "description": "Select one or more applicable work location types.",
@@ -55,6 +48,73 @@
         "enum": ["remote", "hybrid", "on-site"]
       },
       "uniqueItems": true
+    },
+
+    "employmentType": {
+      "title": "Work Location Options",
+      "description": "Select one or more applicable work location types.",
+      "type": "array",
+      "editor": "select",
+      "prefill": ["full-time", "contract"],
+      "items": {
+        "type": "string",
+        "enum": ["full-time", "part-time", "contract", "internship", "temporary"]
+      },
+      "uniqueItems": true
+    },
+
+    "experienceLevel": {
+      "title": "Experience Level",
+      "description": "Select one or more applicable experience levels.",
+      "type": "array",
+      "editor": "select",
+      "items": {
+        "type": "string",
+        "enum": ["internship", "entry", "associate", "mid-senior", "director", "executive"]
+      },
+      "uniqueItems": true
+    },
+
+    "salary": {
+      "title": "Salary Filter",
+      "type": "array",
+      "editor": "select",
+      "description": "Filter by these salary ranges. Example: `100k+`",
+      "items": {
+        "type": "string",
+        "enum": ["40k+", "60k+", "80k+", "100k+", "120k+", "140k+", "160k+", "180k+", "200k+"]
+      },
+      "uniqueItems": true
+    },
+
+    "under10Applicants": {
+      "title": "Under 10 Applicants",
+      "type": "boolean",
+      "description": "Filter jobs with under 10 applicants.",
+      "prefill": false
+    },
+
+    "easyApply": {
+      "title": "LinkedIn Easy Apply",
+      "type": "boolean",
+      "description": "Filter jobs with LinkedIn easy apply option.",
+      "prefill": false
+    },
+
+    "postedLimit": {
+      "title": "Posted Limit",
+      "type": "string",
+      "enum": ["24h", "week", "month"],
+      "description": "Filter jobs posted in the last 24 hours, week or month.",
+      "prefill": "month"
+    },
+
+    "sortBy": {
+      "title": "Sort By",
+      "type": "string",
+      "enum": ["date", "relevance"],
+      "description": "Sort the results by date or relevance.",
+      "prefill": "date"
     },
 
     "maxItems": {
@@ -72,6 +132,12 @@
       "maxItems": 10,
       "sectionCaption": "Advanced",
       "uniqueItems": true
+    },
+
+    "page": {
+      "title": "Start Page Number",
+      "type": "integer",
+      "description": "Page number to start scraping from. Each page contains 25 jobs."
     }
   }
 }
