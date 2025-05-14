@@ -80,6 +80,8 @@ const locations: {
   ...(input.geoIds?.map((geoId) => ({ geoId })) || []),
 ];
 
+let lastPromise: Promise<any> | undefined;
+
 for (const searchQuery of input.jobTitles) {
   let queryCounter = 0;
 
@@ -101,7 +103,7 @@ for (const searchQuery of input.jobTitles) {
         console.info(`Scraped job ${item.id}`);
         scrapedItems++;
         queryCounter++;
-        await Actor.pushData(item);
+        lastPromise = Actor.pushData(item);
       },
       overrideConcurrency: 6,
       maxItems,
@@ -111,5 +113,8 @@ for (const searchQuery of input.jobTitles) {
   }
 }
 
+if (lastPromise) {
+  await lastPromise;
+}
 // Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().
 await Actor.exit();

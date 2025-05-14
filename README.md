@@ -1,6 +1,6 @@
 ## The most Advanced LinkedIn Job Search Mass Scraper
 
-Our powerful tool helps you search LinkedIn Jobs by job titles and filter by locations, companies, and many other parameters without compromising security or violating platform policies. Extract full job and company details.
+Our powerful tool helps you search LinkedIn Jobs by job titles and filter by locations, companies, and many other parameters without compromising security or violating platform policies. Extract full job and company details. Use multiple job title and locations for mass scraping. The actor is designed to be fast, reliable, and easy to use.
 
 ### Key Benefits
 
