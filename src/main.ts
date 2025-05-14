@@ -83,8 +83,8 @@ for (const searchQuery of input.jobTitles) {
       ...(query as any),
     },
     outputType: 'callback',
-    onItemScraped: async ({ item }) => {
-      console.info(`Scraped job ${item.id}`);
+    onItemScraped: async ({ item, logger }) => {
+      logger.log(`Scraped job ${item.id}`);
       scrapedItems++;
       await Actor.pushData(item);
     },
