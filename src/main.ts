@@ -35,8 +35,11 @@ interface Input {
 const input = await Actor.getInput<Input>();
 if (!input) throw new Error('Input is missing!');
 input.jobTitles = (input.jobTitles || []).filter((q) => q && !!q.trim());
-if (!input.jobTitles?.length)
-  throw new Error('Search queries: at least one Job Title is required!');
+if (!input.jobTitles?.length) {
+  console.error('Search queries: at least one Job Title is required!');
+  await Actor.exit();
+  process.exit(0);
+}
 
 const { actorId, actorRunId, actorBuildId, userId, memoryMbytes } = Actor.getEnv();
 let { actorMaxPaidDatasetItems } = Actor.getEnv();
