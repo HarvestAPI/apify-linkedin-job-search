@@ -98,6 +98,10 @@ for (const searchQuery of input.jobTitles) {
       continue;
     }
 
+    console.info(
+      `Scraping jobs for query "${searchQuery}" with location "${location.location || location.geoId}"...`,
+    );
+
     await scraper.scrapeJobs({
       query: {
         ...(query as any),
