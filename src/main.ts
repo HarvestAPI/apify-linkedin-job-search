@@ -58,10 +58,10 @@ const scraper = createLinkedinScraper({
 });
 
 if (!actorMaxPaidDatasetItems) {
-  actorMaxPaidDatasetItems = 9999999999;
+  actorMaxPaidDatasetItems = 10000000;
 }
 
-let maxItems = Number(input.maxItems) || actorMaxPaidDatasetItems || 9999999999;
+let maxItems = Number(input.maxItems) || actorMaxPaidDatasetItems || 10000000;
 
 const query = {
   company: input.company,

@@ -9,7 +9,6 @@
       "editor": "stringList",
       "description": "Search by these job titles. Example: `Software Engineer`. We will run the scraper once for each job title. All filters below will be applied to each job title.",
       "prefill": ["software engineer", "data scientist"],
-      "maxItems": 10,
       "uniqueItems": true
     },
 
@@ -19,7 +18,6 @@
       "editor": "stringList",
       "description": "Filter by these LinkedIn locations. Example: `San Francisco`",
       "prefill": ["New York", "California"],
-      "maxItems": 10,
       "uniqueItems": true
     },
     "company": {
