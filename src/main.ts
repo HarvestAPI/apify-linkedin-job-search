@@ -36,7 +36,13 @@ const input = await Actor.getInput<Input>();
 if (!input) throw new Error('Input is missing!');
 input.jobTitles = (input.jobTitles || []).filter((q) => q && !!q.trim());
 if (!input.jobTitles?.length) {
-  console.error('Search queries: at least one Job Title is required!');
+  console.error('Search queries: at least one Job Title is required.');
+  await Actor.exit();
+  process.exit(0);
+}
+input.locations = (input.locations || []).filter((l) => l && !!l.trim());
+if (!input.locations?.length) {
+  console.error('Locations Filter: at least one Location is required.');
   await Actor.exit();
   process.exit(0);
 }
