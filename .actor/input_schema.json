@@ -8,8 +8,7 @@
       "type": "array",
       "editor": "stringList",
       "description": "Search by these job titles. Example: `Software Engineer`. We will run the scraper once for each job title. All filters below will be applied to each job title.",
-      "prefill": ["software engineer", "data scientist"],
-      "minItems": 1,
+      "prefill": ["software engineer"],
       "uniqueItems": true
     },
 
@@ -19,9 +18,15 @@
       "editor": "stringList",
       "description": "Filter by these LinkedIn locations. Example: `San Francisco`",
       "prefill": ["New York", "California"],
-      "minItems": 1,
       "uniqueItems": true
     },
+    "maxItems": {
+      "title": "Maximum number of jobs to scrape per each job tile and location input",
+      "type": "integer",
+      "description": "Maximum number of jobs to scrape per each job tile and location input.",
+      "prefill": 10
+    },
+
     "company": {
       "title": "Company Filter",
       "type": "array",
@@ -42,7 +47,6 @@
       "description": "Select one or more applicable workplace types.",
       "type": "array",
       "editor": "select",
-      "prefill": ["remote", "hybrid"],
       "items": {
         "type": "string",
         "enum": ["remote", "hybrid", "on-site"]
@@ -55,7 +59,6 @@
       "description": "Select one or more applicable employment types.",
       "type": "array",
       "editor": "select",
-      "prefill": ["full-time", "contract"],
       "items": {
         "type": "string",
         "enum": ["full-time", "part-time", "contract", "internship", "temporary"]
@@ -90,23 +93,20 @@
     "under10Applicants": {
       "title": "Under 10 Applicants",
       "type": "boolean",
-      "description": "Filter jobs with under 10 applicants.",
-      "prefill": false
+      "description": "Filter jobs with under 10 applicants."
     },
 
     "easyApply": {
       "title": "LinkedIn Easy Apply",
       "type": "boolean",
-      "description": "Filter jobs with LinkedIn easy apply option.",
-      "prefill": false
+      "description": "Filter jobs with LinkedIn easy apply option."
     },
 
     "postedLimit": {
       "title": "Posted Limit",
       "type": "string",
       "enum": ["24h", "week", "month"],
-      "description": "Filter jobs posted in the last 24 hours, week or month.",
-      "prefill": "month"
+      "description": "Filter jobs posted in the last 24 hours, week or month."
     },
 
     "sortBy": {
@@ -115,13 +115,6 @@
       "enum": ["date", "relevance"],
       "description": "Sort the results by date or relevance.",
       "prefill": "date"
-    },
-
-    "maxItems": {
-      "title": "Maximum number of jobs to scrape per each search query input",
-      "type": "integer",
-      "description": "Maximum number of jobs to scrape per each search query input.",
-      "prefill": 10
     },
 
     "geoIds": {
