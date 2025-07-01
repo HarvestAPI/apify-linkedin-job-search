@@ -2,6 +2,7 @@
 import { Actor } from 'apify';
 import { config } from 'dotenv';
 import { createLinkedinScraper } from '@harvestapi/scraper';
+import crypto from 'crypto';
 
 config();
 
@@ -113,6 +114,8 @@ for (const combinationQuery of combinations) {
 
   console.info(`Scraping jobs for query ${JSON.stringify(combinationQuery)}...`);
 
+  const sessionId = crypto.randomUUID();
+
   await scraper.scrapeJobs({
     query: {
       ...combinationQuery,
@@ -128,6 +131,7 @@ for (const combinationQuery of combinations) {
     },
     overrideConcurrency: 6,
     maxItems,
+    sessionId,
   });
 }
 
