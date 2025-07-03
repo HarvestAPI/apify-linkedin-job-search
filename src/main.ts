@@ -131,7 +131,7 @@ for (const combinationQuery of combinations) {
     },
     overrideConcurrency: 6,
     maxItems,
-    sessionId,
+    // sessionId,
   });
 }
 
