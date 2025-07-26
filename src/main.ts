@@ -25,6 +25,7 @@ interface Input {
   workplaceType?: string[];
   employmentType?: string[];
   experienceLevel?: string[];
+  industryIds?: string[];
   salary?: string[];
   under10Applicants?: boolean;
   easyApply?: boolean;
@@ -68,6 +69,7 @@ const query = {
   under10Applicants: input.under10Applicants,
   easyApply: input.easyApply,
   postedLimit: input.postedLimit,
+  industryId: input.industryIds,
 };
 
 const locations: {
@@ -132,6 +134,12 @@ for (const combinationQuery of combinations) {
     overrideConcurrency: 6,
     maxItems,
     sessionId,
+    addListingHeaders: {
+      'x-sub-user': user?.username || '',
+      'x-concurrency': user?.username ? '2' : '',
+      'x-queue-size': '15',
+      'x-request-timeout': '180',
+    },
   });
 }
 
