@@ -128,7 +128,10 @@ for (const combinationQuery of combinations) {
       state.itemsLeft -= 1;
 
       if (state.itemsLeft >= 0) {
-        lastPromise = Actor.pushData(item);
+        lastPromise = Actor.pushData({
+          ...item,
+          query: combinationQuery,
+        });
       }
     },
     overrideConcurrency: 6,
