@@ -84,8 +84,6 @@ if (!locations.length) {
   locations.push({ geoId: '92000000' }); // Default to global search if no locations provided
 }
 
-let lastPromise: Promise<any> | undefined;
-
 const combinations: Record<string, string | string[] | undefined | boolean>[] = [];
 
 for (const location of locations) {
@@ -128,7 +126,7 @@ for (const combinationQuery of combinations) {
       state.itemsLeft -= 1;
 
       if (state.itemsLeft >= 0) {
-        lastPromise = Actor.pushData({
+        await Actor.pushData({
           ...item,
           query: combinationQuery,
         });
@@ -146,8 +144,5 @@ for (const combinationQuery of combinations) {
   });
 }
 
-if (lastPromise) {
-  await lastPromise;
-}
 // Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().
 await Actor.exit();
