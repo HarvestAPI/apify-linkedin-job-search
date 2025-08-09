@@ -98,12 +98,15 @@ for (const location of locations) {
 
 const state: {
   itemsLeft: number;
+  scrapedCounter: number;
 } = {
   itemsLeft: actorMaxPaidDatasetItems || 1000000,
+  scrapedCounter: 0,
 };
 
 if (!combinations.length) {
   console.error('No job titles or companies provided in the input. No data will be scraped.');
+  await Actor.exit();
 }
 
 for (const combinationQuery of combinations) {
@@ -126,6 +129,7 @@ for (const combinationQuery of combinations) {
       state.itemsLeft -= 1;
 
       if (state.itemsLeft >= 0) {
+        state.scrapedCounter += 1;
         await Actor.pushData({
           ...item,
           query: combinationQuery,
@@ -141,6 +145,13 @@ for (const combinationQuery of combinations) {
       'x-queue-size': '15',
       'x-request-timeout': '180',
     },
+  });
+}
+
+if (state.scrapedCounter === 0) {
+  await Actor.pushData({
+    message: 'No jobs found.',
+    query: input,
   });
 }
 
