@@ -135,7 +135,6 @@
       "sectionCaption": "Advanced",
       "uniqueItems": true
     },
-
     "page": {
       "title": "Start Page Number",
       "type": "integer",

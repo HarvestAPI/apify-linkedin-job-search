@@ -139,6 +139,7 @@ for (const combinationQuery of combinations) {
     overrideConcurrency: 6,
     maxItems,
     sessionId,
+    startPage: input.page || 1,
     addListingHeaders: {
       'x-sub-user': user?.username || '',
       'x-concurrency': user?.username ? '2' : '',
