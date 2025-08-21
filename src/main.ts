@@ -124,7 +124,7 @@ for (const combinationQuery of combinations) {
       ...combinationQuery,
     },
     outputType: 'callback',
-    onItemScraped: async ({ item }) => {
+    onItemScraped: async ({ item, pagination }) => {
       console.info(`Scraped job ${item.id}`);
       state.itemsLeft -= 1;
 
@@ -133,6 +133,9 @@ for (const combinationQuery of combinations) {
         await Actor.pushData({
           ...item,
           query: combinationQuery,
+          _meta: {
+            pagination,
+          },
         });
       }
     },
