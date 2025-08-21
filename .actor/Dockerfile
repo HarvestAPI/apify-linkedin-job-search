@@ -38,8 +38,10 @@ RUN npm install -g pnpm && pnpm install --prod --frozen-lockfile
 COPY --from=builder /usr/src/app/dist ./dist
 
 # The base image already creates and sets the 'apify' user.
-# Explicitly setting it is good practice for clarity.
-USER apify
+RUN adduser -h /home/apify -D apify && \
+  chown -R apify:apify ./
+
+USER apify 
 
 # Set the command to run the application.
 # Using pnpm directly is slightly more efficient than going through npm.
