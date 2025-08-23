@@ -109,6 +109,8 @@ if (!combinations.length) {
   await Actor.exit();
 }
 
+let didChargeActorStart = false;
+
 for (const combinationQuery of combinations) {
   let maxItems = input.maxItems || state.itemsLeft;
   if (maxItems > state.itemsLeft) {
@@ -130,13 +132,22 @@ for (const combinationQuery of combinations) {
 
       if (state.itemsLeft >= 0) {
         state.scrapedCounter += 1;
-        await Actor.pushData({
-          ...item,
-          query: combinationQuery,
-          _meta: {
-            pagination,
+        await Actor.pushData(
+          {
+            ...item,
+            query: combinationQuery,
+            _meta: {
+              pagination,
+            },
           },
-        });
+          'job',
+        );
+      }
+    },
+    onPageFetched: async () => {
+      if (!didChargeActorStart) {
+        didChargeActorStart = true;
+        Actor.charge({ eventName: 'actor-start' });
       }
     },
     overrideConcurrency: 6,
