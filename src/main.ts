@@ -132,7 +132,7 @@ for (const combinationQuery of combinations) {
 
       if (state.itemsLeft >= 0) {
         state.scrapedCounter += 1;
-        await Actor.pushData(
+        const pushResult = await Actor.pushData(
           {
             ...item,
             query: combinationQuery,
@@ -142,6 +142,11 @@ for (const combinationQuery of combinations) {
           },
           'job',
         );
+        if (pushResult?.eventChargeLimitReached) {
+          await Actor.exit({
+            statusMessage: 'max charge reached',
+          });
+        }
       }
     },
     onPageFetched: async () => {
