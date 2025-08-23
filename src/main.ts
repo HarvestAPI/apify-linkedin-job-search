@@ -109,13 +109,12 @@ if (!combinations.length) {
   await Actor.exit();
 }
 
-let didChargeActorStart = false;
-
 for (const combinationQuery of combinations) {
   let maxItems = input.maxItems || state.itemsLeft;
   if (maxItems > state.itemsLeft) {
     maxItems = state.itemsLeft;
   }
+  let didChargeActorStart = false;
 
   console.info(`Scraping jobs for query ${JSON.stringify(combinationQuery)}...`);
 
