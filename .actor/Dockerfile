@@ -45,4 +45,4 @@ USER apify
 
 # Set the command to run the application.
 # Using pnpm directly is slightly more efficient than going through npm.
-CMD ["pnpm", "start:prod --silent"]
+CMD ["pnpm", "start:prod", "--silent"]
