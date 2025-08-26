@@ -16,7 +16,7 @@
       "title": "Locations Filter",
       "type": "array",
       "editor": "stringList",
-      "description": "Filter by these LinkedIn locations. Example: `San Francisco`",
+      "description": "Filter by these LinkedIn locations. Example: `San Francisco`. LinkedIn does not always understand your text queries. For example for \"UK\" query it will apply \"Ukraine\" location, so you should use \"United Kingdom\" in this case. Try this out first in the location filter input of LinkedIn search at `https://www.linkedin.com/search/results/people/?geoUrn=%5B%22103644278%22%5D` - we will use the first suggestion from the autocomplete popup when you type your location",
       "prefill": ["New York", "California"],
       "uniqueItems": true
     },

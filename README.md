@@ -13,7 +13,7 @@ Our powerful tool helps you search LinkedIn Jobs by job titles and filter by loc
 ## How It Works
 
 - (required) List of job tiles. (e.g., `Software Engineer`, `Data Scientist`, `Product Manager`)
-- (optionally) List of locations to filter (e.g., `New York`, `San Francisco`, `London`)
+- (optional) List of locations where they currently live (e.g., `New York`, `San Francisco`, `London`). Please note that LinkedIn does not always understand your text queries. For example for "UK" query it will apply "Ukraine" location, so you should use "United Kingdom" in this case. Try this out first in the location filter input of LinkedIn search at `https://www.linkedin.com/search/results/people/?geoUrn=%5B%22103644278%22%5D` - we will use the first suggestion from the autocomplete popup when you type your location.
 - (optionally) List of LinkedIn Company URLs or company names (e.g., `Google`, `Meta`, `Amazon`)
 - (optionally) Sort by `relevance` or `date`
 - (optionally) Filter by `workplaceType` (e.g., `Remote`, `Hybrid`, `On-site`)
@@ -23,6 +23,7 @@ Our powerful tool helps you search LinkedIn Jobs by job titles and filter by loc
 - (optionally) Filter by `under10Applicants` (e.g., `true`, `false`)
 - (optionally) Filter by `easyApply` (e.g., `true`, `false`)
 - (optionally) Filter by `postedLimit` (e.g., `Past 24 hours`, `Past Week`, `Past Month`)
+- (optional) List of LinkedIn industry IDs (e.g., `4`, `5`, `6`). You can find the full list of IDs in the [LinkedIn Industries](https://github.com/HarvestAPI/linkedin-industry-codes-v2/blob/main/linkedin_industry_code_v2_all_eng_with_header.csv).
 
 Other params (optionally):
 
