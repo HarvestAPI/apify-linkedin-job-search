@@ -43,6 +43,7 @@ const { actorMaxPaidDatasetItems } = Actor.getEnv();
 
 const client = Actor.newClient();
 const user = userId ? await client.user(userId).get() : null;
+const isPaying = (user as Record<string, any> | null)?.isPaying === false ? false : true;
 
 const scraper = createLinkedinScraper({
   apiKey: process.env.HARVESTAPI_TOKEN!,
@@ -160,8 +161,8 @@ for (const combinationQuery of combinations) {
     startPage: input.page || 1,
     addListingHeaders: {
       'x-sub-user': user?.username || '',
-      'x-concurrency': user?.username ? '2' : '',
-      'x-queue-size': '15',
+      'x-concurrency': user?.username ? (isPaying ? '20' : '2') : '',
+      'x-queue-size': isPaying ? '30' : '10',
       'x-request-timeout': '180',
     },
   });
