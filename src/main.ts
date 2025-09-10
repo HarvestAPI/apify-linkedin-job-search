@@ -167,12 +167,5 @@ for (const combinationQuery of combinations) {
   });
 }
 
-if (state.scrapedCounter === 0) {
-  await Actor.pushData({
-    message: 'No jobs found.',
-    query: input,
-  });
-}
-
 // Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().
 await Actor.exit();
