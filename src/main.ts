@@ -100,9 +100,11 @@ for (const location of locations) {
 const state: {
   itemsLeft: number;
   scrapedCounter: number;
-} = {
+  scrapedQueries: string[];
+} = (await Actor.getValue('crawling-state')) || {
   itemsLeft: actorMaxPaidDatasetItems || 1000000,
   scrapedCounter: 0,
+  scrapedQueries: [],
 };
 
 if (!combinations.length) {
@@ -110,7 +112,18 @@ if (!combinations.length) {
   await Actor.exit();
 }
 
+Actor.on('migrating', async () => {
+  await Actor.setValue('crawling-state', state);
+  await Actor.reboot();
+});
+
 for (const combinationQuery of combinations) {
+  const combinationKey = JSON.stringify(combinationQuery);
+  if (state.scrapedQueries.includes(combinationKey)) {
+    console.info(`Skipping already scraped query: ${combinationKey}`);
+    continue;
+  }
+
   let maxItems = input.maxItems || state.itemsLeft;
   if (maxItems > state.itemsLeft) {
     maxItems = state.itemsLeft;
@@ -166,6 +179,9 @@ for (const combinationQuery of combinations) {
       'x-request-timeout': '180',
     },
   });
+
+  state.scrapedQueries.push(combinationKey);
+  await Actor.setValue('crawling-state', state);
 }
 
 // Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().

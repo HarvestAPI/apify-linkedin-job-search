@@ -4,7 +4,7 @@
   "schemaVersion": 1,
   "properties": {
     "jobTitles": {
-      "title": "Job Titles",
+      "title": "Search queries",
       "type": "array",
       "editor": "stringList",
       "description": "Search by these job titles. Example: `Software Engineer`. We will run the scraper once for each job title. All filters below will be applied to each job title.",
@@ -105,8 +105,8 @@
     "postedLimit": {
       "title": "Posted Limit",
       "type": "string",
-      "enum": ["24h", "week", "month"],
-      "description": "Filter jobs posted in the last 24 hours, week or month."
+      "enum": ["1", "24h", "week", "month"],
+      "description": "Filter jobs posted in the last hour, 24 hours, week or month."
     },
 
     "industryIds": {

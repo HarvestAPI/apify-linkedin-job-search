@@ -22,7 +22,7 @@ Our powerful tool helps you search LinkedIn Jobs by job titles and filter by loc
 - (optionally) Filter by `salary` (e.g., `100000-150000`)
 - (optionally) Filter by `under10Applicants` (e.g., `true`, `false`)
 - (optionally) Filter by `easyApply` (e.g., `true`, `false`)
-- (optionally) Filter by `postedLimit` (e.g., `Past 24 hours`, `Past Week`, `Past Month`)
+- (optionally) Filter by `postedLimit` (e.g., `Past hout`, `Past 24 hours`, `Past Week`, `Past Month`)
 - (optional) List of LinkedIn industry IDs (e.g., `4`, `5`, `6`). You can find the full list of IDs in the [LinkedIn Industries](https://github.com/HarvestAPI/linkedin-industry-codes-v2/blob/main/linkedin_industry_code_v2_all_eng_with_header.csv).
 
 Other params (optionally):
