@@ -105,7 +105,7 @@
     "postedLimit": {
       "title": "Posted Limit",
       "type": "string",
-      "enum": ["1", "24h", "week", "month"],
+      "enum": ["1h", "24h", "week", "month"],
       "description": "Filter jobs posted in the last hour, 24 hours, week or month."
     },
 
