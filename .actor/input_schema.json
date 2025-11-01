@@ -9,7 +9,8 @@
       "editor": "stringList",
       "description": "Search by these job titles. Example: `Software Engineer`. We will run the scraper once for each job title. All filters below will be applied to each job title.",
       "prefill": ["software engineer"],
-      "uniqueItems": true
+      "uniqueItems": true,
+      "maxLength": 500
     },
 
     "locations": {
