@@ -3,6 +3,7 @@ import { Actor } from 'apify';
 import { config } from 'dotenv';
 import { createLinkedinScraper } from '@harvestapi/scraper';
 import crypto from 'crypto';
+import { styleText } from 'node:util';
 
 config();
 
@@ -89,7 +90,16 @@ const combinations: Record<string, string | string[] | undefined | boolean>[] = 
 
 for (const location of locations) {
   if (input.jobTitles.length) {
-    for (const searchQuery of input.jobTitles) {
+    for (let searchQuery of input.jobTitles) {
+      if (searchQuery) searchQuery = searchQuery.trim();
+      if (searchQuery.length > 500) {
+        console.warn(
+          styleText('bgYellow', ' [WARNING] ') +
+            `Job title "${searchQuery}" exceeds maximum length of 500 characters. Skipping this job title.`,
+        );
+        continue;
+      }
+
       combinations.push({ search: searchQuery, ...query, ...location });
     }
   } else {
