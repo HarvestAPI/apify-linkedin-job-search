@@ -160,7 +160,7 @@ for (const combinationQuery of combinations) {
 
   console.info(`Scraping jobs for query ${JSON.stringify(combinationQuery)}...`);
 
-  const sessionId = crypto.randomUUID();
+  const sessionId = input.cookie ? undefined : crypto.randomUUID();
 
   await scraper.scrapeJobs({
     query: {
