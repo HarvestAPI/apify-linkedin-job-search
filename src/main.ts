@@ -47,6 +47,16 @@ if (!input) throw new Error('Input is missing!');
 input.jobTitles = (input.jobTitles || []).filter((q) => q && !!q.trim());
 input.locations = (input.locations || []).filter((l) => l && !!l.trim());
 
+if (input.cookie && !input.userAgent) {
+  console.warn(
+    styleText('bgYellow', ' [WARNING] ') +
+      'LinkedIn cookie provided without user agent. This may lead to unsuccessful scraping. Please provide your LinkedIn user agent as well.',
+  );
+  await Actor.exit({
+    statusMessage: 'LinkedIn cookie provided without user agent',
+  });
+}
+
 const { actorId, actorRunId, actorBuildId, userId, memoryMbytes } = Actor.getEnv();
 const { actorMaxPaidDatasetItems } = Actor.getEnv();
 

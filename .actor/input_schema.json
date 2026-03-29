@@ -147,16 +147,14 @@
       "type": "string",
       "description": "Your LinkedIn cookies. You can export them via the browser extension [Cookie-Editor](https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm/).",
       "editor": "textfield",
-      "prefill": "YOUR_LINKEDIN_COOKIE_HERE",
       "sectionCaption": "Custom session",
-      "sectionDescription": "Optionally, you can provide your LinkedIn cookie to use your session for scraping. This can help getting jobs in your region and relevant to your account. You account will only be used to scrape search pages, for job details we will use our resources."
+      "sectionDescription": "Optionally, you can provide your LinkedIn cookie to use your session for scraping. This can help you get jobs in your region and those relevant to your account. Your account will only be used to scrape search pages; for job details, we will use our resources."
     },
     "userAgent": {
       "title": "User Agent",
       "type": "string",
       "description": "User agent to use for scraping. Copy your User Agent from https://www.whatismybrowser.com/detect/what-is-my-user-agent/ and paste it here.",
-      "editor": "textfield",
-      "prefill": "YOUR_USER_AGENT_HERE"
+      "editor": "textfield"
     },
     "proxy": {
       "title": "Proxy",
