@@ -140,6 +140,29 @@
       "title": "Start Page Number",
       "type": "integer",
       "description": "Page number to start scraping from. Each page contains 25 jobs."
+    },
+
+    "cookie": {
+      "title": "LinkedIn Cookies",
+      "type": "string",
+      "description": "Your LinkedIn cookies. You can export them via the browser extension [Cookie-Editor](https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm/).",
+      "editor": "textfield",
+      "prefill": "YOUR_LINKEDIN_COOKIE_HERE",
+      "sectionCaption": "Custom session",
+      "sectionDescription": "Optionally, you can provide your LinkedIn cookie to use your session for scraping. This can help getting jobs in your region and relevant to your account. You account will only be used to scrape search pages, for job details we will use our resources."
+    },
+    "userAgent": {
+      "title": "User Agent",
+      "type": "string",
+      "description": "User agent to use for scraping. Copy your User Agent from https://www.whatismybrowser.com/detect/what-is-my-user-agent/ and paste it here.",
+      "editor": "textfield",
+      "prefill": "YOUR_USER_AGENT_HERE"
+    },
+    "proxy": {
+      "title": "Proxy",
+      "type": "string",
+      "description": "Proxy URL to use for scraping. If not provided, the actor will use its default proxy. For safe scraping, we recommend you to find and provide a clean residential proxy.",
+      "editor": "textfield"
     }
   }
 }

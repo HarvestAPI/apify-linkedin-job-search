@@ -1,7 +1,11 @@
 // Apify SDK - toolkit for building Apify Actors (Read more at https://docs.apify.com/sdk/js/).
 import { Actor } from 'apify';
 import { config } from 'dotenv';
-import { createLinkedinScraper } from '@harvestapi/scraper';
+import {
+  BaseFetchParams,
+  createLinkedinScraper,
+  SearchLinkedinJobsParams,
+} from '@harvestapi/scraper';
 import crypto from 'crypto';
 import { styleText } from 'node:util';
 
@@ -31,6 +35,10 @@ interface Input {
   under10Applicants?: boolean;
   easyApply?: boolean;
   postedLimit?: string;
+
+  cookie?: string;
+  userAgent?: string;
+  proxy?: string;
 }
 
 // Structure of input is defined in input_schema.json
@@ -177,6 +185,19 @@ for (const combinationQuery of combinations) {
         didChargeActorStart = true;
         Actor.charge({ eventName: 'actor-start' });
       }
+    },
+    optionsOverride: {
+      fetchList: (args) => {
+        const params: SearchLinkedinJobsParams & BaseFetchParams = {
+          ...combinationQuery,
+          ...args,
+        };
+        if (input.cookie) params.cookie = Buffer.from(input.cookie).toString('base64');
+        if (input.userAgent) params.userAgent = input.userAgent;
+        if (input.proxy) params.proxy = input.proxy;
+
+        return scraper.searchJobs(params);
+      },
     },
     overrideConcurrency: 6,
     maxItems,
