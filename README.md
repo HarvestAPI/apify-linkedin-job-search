@@ -12,7 +12,7 @@ Our powerful tool helps you search LinkedIn Jobs by job titles and filter by loc
 
 ## How It Works
 
-- (required) List of job tiles. (e.g., `Software Engineer`, `Data Scientist`, `Product Manager`)
+- (required) List of search queries. (e.g., `Software Engineer`, `Data Scientist`, `Product Manager`). LinkedIn search [supports boolean operators](https://www.linkedin.com/help/linkedin/answer/a524335).
 - (optional) List of locations where they currently live (e.g., `New York`, `San Francisco`, `London`). Please note that LinkedIn does not always understand your text queries. For example for "UK" query it will apply "Ukraine" location, so you should use "United Kingdom" in this case. Try this out first in the location filter input of LinkedIn search at `https://www.linkedin.com/search/results/people/?geoUrn=%5B%22103644278%22%5D` - we will use the first suggestion from the autocomplete popup when you type your location.
 - (optionally) List of LinkedIn Company URLs or company names (e.g., `Google`, `Meta`, `Amazon`)
 - (optionally) Sort by `relevance` or `date`
